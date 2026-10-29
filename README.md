@@ -37,9 +37,10 @@ GitHub Pages: Settings → Pages → Branch: эта ветка, папка `/doc
 |---|---|
 | https://mustravel.github.io/STU/ | Демо 1: дизайн в стиле divan.ru (эта ветка) |
 | https://mustravel.github.io/STU/v2/ | Демо 2: дизайн в стиле lamoda.ru (собрано из ветки `lamoda-demo`) |
+| https://mustravel.github.io/STU/v3/ | Демо 3: дизайн в стиле sportmaster.ru (собрано из ветки `sportmaster-demo`) |
 
-Обновить демо 2: в ветке `lamoda-demo` выполнить `./build.sh`, затем скопировать
-`docs/index.html` и `docs/*.js` в `docs/v2/` этой ветки.
+Обновить демо 2 или 3: в ветке `lamoda-demo` / `sportmaster-demo` выполнить `./build.sh`,
+затем скопировать `docs/index.html` и `docs/*.js` в `docs/v2/` / `docs/v3/` этой ветки.
 
 ## Проверка поиска (примеры)
 
