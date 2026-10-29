@@ -1,9 +1,9 @@
-<title>СантехУрал демо 3</title>
+<title>СантехУрал демо 4</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Прототип нового интернет-магазина СантехУрал: адаптивный дизайн, умный поиск, корзина и оформление заказа">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
 <style>
 /* Макет: светлый магазин в стиле divan.ru — белый фон, тёплые серые подложки под товар,
    пастельные промо-плашки, тёмно-зелёный акцент для действий. Mobile-first, таббар снизу на телефоне. */
@@ -435,8 +435,8 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
   --hero-3: #111827;
   --shadow: 0 12px 32px rgba(17, 24, 39, .14);
   --shadow-lift: 0 8px 24px rgba(17, 24, 39, .12);
-  --font: "Roboto", "Helvetica Neue", Arial, sans-serif;
-  --display: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  --font: "Golos Text", "Helvetica Neue", Arial, sans-serif;     /* шрифты как в демо 2 (lamoda) */
+  --display: "Golos Text", "Helvetica Neue", Arial, sans-serif;
 }
 body { font-size: 14.5px; }
 h1, h2, h3, .sec-head h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; letter-spacing: .01em; }
@@ -540,6 +540,31 @@ h2 { font-size: clamp(20px, 2.2vw, 28px); }
 .footer b { font-family: var(--display); text-transform: uppercase; }
 .footer .copy { border-top-color: rgba(255, 255, 255, .15); }
 .toast a { color: var(--hit); }
+
+/* =====================================================================
+   ДЕМО 4: дизайн Sportmaster + шрифты Lamoda (Golos Text).
+   У Golos нет курсива — заголовки прямые, наклон логотипа даёт плашка (skewX).
+   Капс с разрядкой, как у lamoda; кегли чуть меньше, т.к. Golos шире узкого Roboto Condensed.
+   ===================================================================== */
+:root { --caps: .06em; }
+h1, h2, h3, .sec-head h2 { letter-spacing: .02em; font-weight: 800; }
+h1 { font-size: clamp(22px, 2.7vw, 30px); }
+h2 { font-size: clamp(18px, 2vw, 24px); }
+.logo-word { font-style: normal; letter-spacing: .04em; }
+.slide h2 { font-style: normal; font-size: clamp(26px, 4.2vw, 48px); line-height: 1.02; letter-spacing: .01em; }
+.slide .eyebrow, .lbl-sale, .lbl-hit, .lbl-new { letter-spacing: var(--caps); }
+.btn, .btn-catalog, .search-go { letter-spacing: var(--caps); font-size: 13px; font-weight: 700; }
+.btn-lg { font-size: 14px; }
+.card .btn { font-size: 13px; }
+.h-cats a { font-size: 12.5px; letter-spacing: var(--caps); }
+.cat-tile b { font-size: 15px; letter-spacing: .03em; }
+@media (min-width: 700px) { .cat-tile b { font-size: 17px; } }
+.perk b, .f-group > b, .fs legend, .footer b { font-size: 13px; letter-spacing: var(--caps); }
+.price { font-weight: 800; }
+/* Golos шире: бейджи переносятся, не заезжая на сердечко; картинка в плитке меньше, чтобы не наезжать на подпись */
+.labels { right: 44px; }
+.cat-tile b { max-width: 55%; }
+.cat-tile img { width: 50%; }
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
