@@ -84,6 +84,7 @@
         '<img class="alt" loading="lazy" src="' + productImageAlt(p.img) + '" alt="" aria-hidden="true">' + labels(p) + '</a>' +
       '<button type="button" class="fav' + (favs.includes(p.id) ? ' on' : '') + '" data-fav="' + p.id + '" aria-label="В избранное">' + IC.heart + '</button>' +
       '<div class="price-row"><span class="price' + (p.old ? ' sale' : '') + '">' + money(p.price) + '</span>' + (p.old ? '<span class="old">' + money(p.old) + '</span>' : '') + '</div>' +
+      '<div class="brand">' + esc(p.brand || catBy[p.cat].short) + '</div>' +
       '<a class="name" href="#p-' + p.id + '">' + esc(p.name) + '</a>' +
       stockHtml(p) +
       '<div class="actions">' + buyControl(p) + '</div></article>';
@@ -307,6 +308,7 @@
       '<section class="wrap"><div class="pdp">' +
         '<div class="gallery"><img src="' + productImage(p.img) + '" alt="' + esc(p.name) + '">' + labels(p) + '</div>' +
         '<div class="pdp-info">' +
+          '<div class="pdp-brand">' + esc(p.brand || c.name) + '</div>' +
           '<h1 style="font-size:clamp(22px,2.6vw,30px)">' + esc(p.name) + '</h1>' +
           '<div class="sku"><span>Артикул: ' + p.sku + '</span>' + (p.brand ? '<span>Бренд: ' + esc(p.brand) + '</span>' : '') + '</div>' +
           '<div class="buybox">' +

@@ -1,9 +1,9 @@
-<title>СантехУрал демо-магазин</title>
+<title>СантехУрал демо 2</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Прототип нового интернет-магазина СантехУрал: адаптивный дизайн, умный поиск, корзина и оформление заказа">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
 <style>
 /* Макет: светлый магазин в стиле divan.ru — белый фон, тёплые серые подложки под товар,
    пастельные промо-плашки, тёмно-зелёный акцент для действий. Mobile-first, таббар снизу на телефоне. */
@@ -408,6 +408,171 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
 .toast a { color: var(--tone-lemon); font-weight: 700; white-space: nowrap; }
 @media (min-width: 900px) { .toast { bottom: 24px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+
+/* =====================================================================
+   ТЕМА LAMODA (демо 2): поверх базовых стилей демо 1.
+   Чёрно-белая гамма, текстовый логотип строчными, навигация капсом с разрядкой,
+   портретные фото товара на светло-сером, цена → бренд → название, чёрные кнопки,
+   красная цена со скидкой. Прямые углы сохраняются.
+   ===================================================================== */
+:root {
+  --bg: #ffffff;
+  --surface: #f6f6f6;
+  --surface-2: #ececec;
+  --ink: #000000;
+  --muted: #8a8a8a;
+  --line: #e5e5e5;
+  --accent: #000000;
+  --accent-hover: #2b2b2b;
+  --accent-ink: #ffffff;
+  --accent-soft: #f2f2f2;
+  --sale: #f0193c;
+  --ok: #00a046;
+  --warn: #d26b00;
+  --warn-soft: #fff3e3;
+  --hero-1: #ede7df;
+  --hero-2: #000000;
+  --hero-3: #dde5ea;
+  --shadow: 0 12px 32px rgba(0, 0, 0, .12);
+  --shadow-lift: 0 0 0 1px var(--line);
+  --font: "Golos Text", "Helvetica Neue", Arial, sans-serif;
+  --caps: .08em;
+}
+body { font-size: 14px; }
+h1 { font-weight: 700; font-size: clamp(22px, 2.6vw, 30px); letter-spacing: 0; }
+h2 { font-weight: 700; font-size: clamp(18px, 2vw, 24px); letter-spacing: 0; }
+
+/* Шапка */
+.demo-bar { background: var(--ink); }
+.demo-bar b { color: #ffffff; }
+.h-top { font-size: 12px; }
+.h-top .phone { font-size: 13px; }
+.logo-word { font-size: 26px; font-weight: 800; letter-spacing: -.045em; text-transform: lowercase; line-height: 1; }
+.h-sections { display: none; }
+.btn-catalog { display: none !important; }
+.search-field { background: var(--surface); height: 40px; }
+.search-field:focus-within { border-color: var(--ink); }
+.search-go { height: 30px; text-transform: uppercase; letter-spacing: var(--caps); font-size: 12px; font-weight: 600; }
+.h-icon { font-size: 11px; }
+.badge-count { background: var(--ink); }
+.h-cats { border-top: 1px solid var(--line); }
+.h-cats .wrap { display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; padding-block: 11px; }
+.h-cats .wrap::-webkit-scrollbar { display: none; }
+.h-cats a { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: var(--caps); white-space: nowrap; }
+.h-cats a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.h-cats a.hot { color: var(--sale); }
+@media (min-width: 900px) {
+  .h-main .wrap { grid-template-columns: auto auto 1fr auto; gap: 28px; }
+  .h-sections { display: flex; gap: 20px; }
+  .h-sections a { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: var(--caps); padding-block: 6px; border-bottom: 2px solid transparent; }
+  .h-sections a:hover { border-bottom-color: var(--ink); }
+  .search-field { height: 40px; }
+  .logo-word { font-size: 30px; }
+  .h-cats .wrap { justify-content: center; gap: 30px; }
+}
+
+/* Кнопки: чёрные, капсом */
+.btn { text-transform: uppercase; letter-spacing: var(--caps); font-size: 13px; font-weight: 600; }
+.btn-lg { font-size: 13px; height: 52px; }
+.btn-ghost { background: var(--bg); border: 1px solid var(--ink); }
+.btn-ghost:hover { background: var(--surface); }
+.chip { background: var(--bg); border: 1px solid var(--line); font-size: 13px; }
+.chip:hover { border-color: var(--ink); background: var(--bg); }
+.chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.sec-head h2 { text-transform: uppercase; letter-spacing: var(--caps); font-size: clamp(16px, 1.6vw, 20px); }
+.sec-head a { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; font-weight: 500; }
+
+/* Промо: крупный заголовок капсом */
+.slide.t-lemon { background: var(--hero-1); }
+.slide.dark { background: var(--hero-2); }
+.slide.t-sand { background: var(--hero-3); }
+.slide h2 { text-transform: uppercase; font-weight: 800; letter-spacing: -.01em; }
+.slide .eyebrow { letter-spacing: .14em; font-weight: 600; }
+.slide .btn { background: var(--ink); color: var(--bg); }
+.slide.dark .btn { background: var(--bg); color: var(--ink); }
+.dots button { height: 3px; width: 28px; background: var(--line); }
+.dots button.on { width: 28px; background: var(--ink); }
+
+/* Плитки категорий: фото на сером, подпись капсом под ним */
+.cat-tile { background: var(--surface) !important; min-height: 0; aspect-ratio: 3 / 4; max-width: 100%; justify-content: flex-end; padding: 0; }
+.cat-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 14% 10% 28%; right: auto; bottom: auto; }
+.cat-tile b, .cat-tile small { padding-inline: 14px; max-width: none; }
+.cat-tile b { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: var(--caps); }
+.cat-tile small { padding-bottom: 14px; padding-top: 2px; }
+.cat-tile:hover { transform: none; }
+.cat-tile:hover b { text-decoration: underline; text-underline-offset: 4px; }
+@media (min-width: 700px) { .cats { grid-template-columns: repeat(6, 1fr); gap: 12px; } .cat-tile b { font-size: 13px; } }
+
+/* Карточка товара: портретное фото, цена → бренд → название */
+.card { gap: 4px; }
+.card-img { aspect-ratio: 3 / 4; background: var(--surface); margin-bottom: 6px; }
+.card-img img { padding: 12%; }
+.labels { top: auto; bottom: 10px; left: 10px; }
+.lbl-sale, .lbl-hit, .lbl-new { font-size: 11px; font-weight: 700; padding: 3px 7px; letter-spacing: .02em; }
+.lbl-sale { background: var(--sale); }
+.lbl-hit { background: var(--ink); color: var(--bg); }
+.lbl-new { background: var(--bg); color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.price { font-size: 15px; font-weight: 700; }
+.price.sale { color: var(--sale); }
+.old { font-size: 13px; }
+.card .brand { font-size: 13px; font-weight: 700; }
+.card .name { font-size: 13px; color: var(--muted); -webkit-line-clamp: 2; }
+.card .name:hover { color: var(--ink); }
+.stock { font-size: 12px; font-weight: 500; }
+.stock::before { width: 6px; height: 6px; }
+.card .actions { padding-top: 8px; }
+.card .btn { height: 38px; font-size: 12px; background: var(--bg); color: var(--ink); border: 1px solid var(--ink); }
+.card .btn:hover { background: var(--ink); color: var(--bg); }
+.card .stepper { background: var(--surface); height: 38px; }
+@media (min-width: 700px) { .price { font-size: 16px; } .card .name { font-size: 13px; } }
+@media (hover: hover) { .card:hover .card-img { transform: none; } }
+
+/* Преимущества и калькулятор */
+.perk { background: var(--bg); border: 1px solid var(--line); }
+.perk svg { color: var(--ink); }
+.perk b { text-transform: uppercase; letter-spacing: var(--caps); font-size: 13px; }
+.calc { background: var(--surface); }
+.calc h2 { text-transform: uppercase; letter-spacing: .02em; }
+.calc-link { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+
+/* Каталог и фильтры */
+.cat-head h1 { font-weight: 700; }
+.f-group > b { text-transform: uppercase; letter-spacing: var(--caps); font-size: 12px; }
+.check input:checked { background-color: var(--ink); border-color: var(--ink); }
+.toggle input:checked { background: var(--ink); }
+.toolbar select.input { border-color: var(--line); }
+
+/* Страница товара */
+.gallery { aspect-ratio: 3 / 4; background: var(--surface); }
+@media (min-width: 900px) { .gallery { max-height: 82vh; } .pdp { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.pdp-brand { font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+.pdp-info h1 { font-size: 16px !important; font-weight: 400; color: var(--muted); }
+.buybox { border: 0; padding: 0; }
+.buybox .price { font-size: 26px; }
+.delivery { background: var(--bg); border: 1px solid var(--line); }
+.delivery svg { color: var(--ink); }
+.specs dt, .specs dd { border-bottom-style: solid; }
+.note { background: var(--surface); }
+
+/* Корзина и оформление */
+.summary { background: var(--bg); border: 1px solid var(--line); }
+.s-row.total { font-size: 18px; }
+.fs legend { text-transform: uppercase; letter-spacing: var(--caps); font-size: 14px; }
+.opt:has(input:checked) { border-color: var(--ink); background: var(--surface); }
+.opt input:checked { background: var(--ink); border-color: var(--ink); }
+.input:focus { border-color: var(--ink); }
+.done .ok-ic { background: var(--ink); color: var(--bg); }
+
+/* Поиск-подсказки */
+.sg-note { background: var(--surface); }
+.sg-row .nm mark { background: transparent; font-weight: 700; }
+.sg-title { letter-spacing: var(--caps); }
+
+/* Подвал и таббар */
+.footer { background: var(--surface); }
+.footer b { text-transform: uppercase; letter-spacing: var(--caps); font-size: 12px; }
+.tab.on { color: var(--ink); }
+.toast a { color: #ffffff; text-decoration: underline; }
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
@@ -422,9 +587,11 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
   </div></div>
   <div class="h-main"><div class="wrap">
     <a class="logo" href="#home" aria-label="СантехУрал, на главную">
-      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7.5 6.5 10.6 6.5 14a5.5 5.5 0 0 0 11 0C17.5 10.6 15 7.5 12 3Z" fill="#fff"/></svg></span>
-      <span>СантехУрал<small>сантехника и отопление</small></span>
+      <span class="logo-word">сантехурал</span>
     </a>
+    <nav class="h-sections" aria-label="Разделы">
+      <a href="#cat-moyki">Сантехника</a><a href="#cat-radiatory">Отопление</a><a href="#cat-valtec">Водоснабжение</a>
+    </nav>
     <button class="btn-catalog" id="btn-catalog" aria-expanded="false">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Каталог
     </button>
@@ -449,6 +616,11 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
       </a>
     </nav>
   </div></div>
+  <nav class="h-cats" aria-label="Категории"><div class="wrap">
+    <a href="#cat-moyki">Мойки</a><a href="#cat-g-lauf">Смесители G-Lauf</a><a href="#cat-frap">Смесители FRAP</a>
+    <a href="#cat-radiatory">Радиаторы</a><a href="#cat-komplektuyushchie">Комплектующие</a><a href="#cat-valtec">Valtec</a>
+    <a href="#catalog" class="hot">Все товары</a>
+  </div></nav>
   <div class="mega" id="mega" hidden></div>
 </header>
 
@@ -456,7 +628,7 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
 
 <footer class="footer"><div class="wrap">
   <div class="f-brand">
-    <a class="logo" href="#home"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7.5 6.5 10.6 6.5 14a5.5 5.5 0 0 0 11 0C17.5 10.6 15 7.5 12 3Z" fill="#fff"/></svg></span><span>СантехУрал</span></a>
+    <a class="logo" href="#home"><span class="logo-word">сантехурал</span></a>
     <span class="muted">Сантехника, отопление и водоснабжение. Остатки и цены синхронизируются с 1С.</span>
     <b style="margin:6px 0 0">8 (800) 000-00-00</b>
   </div>
