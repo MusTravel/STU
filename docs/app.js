@@ -121,13 +121,13 @@
       '<section class="section wrap"><div class="sec-head"><h2>Каталог</h2></div><div class="cats">' +
         CATEGORIES.map((c) => '<a class="cat-tile t-' + c.tone + '" href="#cat-' + c.slug + '"><b>' + c.name + '</b><small>' + goods(PRODUCTS.filter((p) => p.cat === c.slug).length) + '</small><img src="' + productImage(c.img) + '" alt=""></a>').join('') +
       '</div></section>' +
-      '<section class="section wrap"><div class="sec-head"><h2>Хиты продаж</h2></div><div class="rail">' + hits.map(card).join('') + '</div></section>' +
       '<section class="section wrap"><div class="perks">' +
         '<div class="perk">' + IC.stock + '<b>Точные остатки</b><span>Наличие на сайте обновляется из 1С. Видно, сколько штук на складе.</span></div>' +
         '<div class="perk">' + IC.box + '<b>Самовывоз со склада</b><span>Товар в наличии можно забрать в день заказа.</span></div>' +
         '<div class="perk">' + IC.truck + '<b>Доставка по городу и области</b><span>Привезём на объект или домой в удобное время.</span></div>' +
         '<div class="perk">' + IC.doc + '<b>Оплата по счёту</b><span>Для юрлиц и монтажных организаций, с закрывающими документами.</span></div>' +
       '</div></section>' +
+      '<section class="section wrap"><div class="sec-head"><h2>Хиты продаж</h2></div><div class="rail">' + hits.map(card).join('') + '</div></section>' +
       '<section class="section wrap"><div class="calc">' +
         '<div><h2>Какой радиатор нужен для комнаты?</h2><p class="muted">Введите площадь: посчитаем мощность по норме 100 Вт на 1 м² при потолке до 2,7 м и покажем подходящие модели.</p></div>' +
         '<div><form class="calc-form" id="calc"><div class="field"><label for="calc-area">Площадь, м²</label><input class="input" id="calc-area" type="number" inputmode="decimal" min="3" max="80" value="16"></div>' +
