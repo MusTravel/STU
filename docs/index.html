@@ -210,7 +210,8 @@ main { min-height: 60vh; }
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px; }
 @media (min-width: 700px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 16px; } }
 @media (min-width: 1200px) { .grid.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-.rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(160px, 44%); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: thin; }
+/* Лента прокручивается только по горизонтали; сверху запас под подъём карточки при наведении */
+.rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(160px, 44%); gap: 12px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; padding-top: 6px; padding-bottom: 8px; scrollbar-width: thin; }
 .rail > * { scroll-snap-align: start; }
 @media (min-width: 700px) { .rail { grid-auto-columns: calc((100% - 36px) / 4); gap: 12px; } }
 @media (min-width: 1200px) { .rail { grid-auto-columns: calc((100% - 48px) / 5); } }
