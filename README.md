@@ -33,6 +33,14 @@
 
 GitHub Pages: Settings → Pages → Branch: эта ветка, папка `/docs`.
 
+| Адрес | Что |
+|---|---|
+| https://mustravel.github.io/STU/ | Демо 1: дизайн в стиле divan.ru (эта ветка) |
+| https://mustravel.github.io/STU/v2/ | Демо 2: дизайн в стиле lamoda.ru (собрано из ветки `lamoda-demo`) |
+
+Обновить демо 2: в ветке `lamoda-demo` выполнить `./build.sh`, затем скопировать
+`docs/index.html` и `docs/*.js` в `docs/v2/` этой ветки.
+
 ## Проверка поиска (примеры)
 
 `cvtcbntkm` → смеситель · `смеситль для кухни` · `фрап черный` · `вальтек кран` ·

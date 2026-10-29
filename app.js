@@ -12,6 +12,7 @@
   const $ = (s, el) => (el || document).querySelector(s);
   const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
   const view = $('#view');
+  const PAGE_TITLE = document.title; // у каждого демо свой заголовок вкладки
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const money = (n) => Math.round(n).toLocaleString('ru-RU') + ' ₽';
   const plural = (n, a, b, c) => { const m = n % 10, h = n % 100; return n + ' ' + (m === 1 && h !== 11 ? a : m >= 2 && m <= 4 && (h < 10 || h >= 20) ? b : c); };
@@ -562,7 +563,7 @@
     else pageNotFound();
     const tab = h.startsWith('cat-') || h === 'catalog' || h.startsWith('p-') ? 'catalog' : h === 'checkout' ? 'cart' : h;
     $$('.tab').forEach((t) => t.classList.toggle('on', t.dataset.tab === tab));
-    document.title = 'СантехУрал демо-магазин';
+    document.title = PAGE_TITLE;
     window.scrollTo(0, 0);
   }
 
