@@ -226,4 +226,48 @@
     const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">' + body + '</svg>';
     return (cache[key] = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg));
   };
+
+  // ---------- Второй кадр: товар в интерьере (показывается при наведении на карточку) ----------
+  // В рабочей версии — второе фото товара из Битрикса (MORE_PHOTO).
+  const SCENE_OF = {
+    'sink-stone': 'kitchen', 'sink-steel': 'kitchen', 'faucet-kitchen': 'kitchen',
+    'faucet-basin': 'bath', 'faucet-bath': 'bath', 'shower': 'bath',
+    'radiator': 'room', 'thermohead': 'room', 'thermovalve': 'room', 'valve-bottom': 'room', 'bracket': 'room', 'mayevsky': 'room', 'plugs': 'room',
+  };
+  function tiles(x0, y0, w, h, tw, th, fill, line) {
+    let s = '<rect x="' + x0 + '" y="' + y0 + '" width="' + w + '" height="' + h + '" fill="' + fill + '"/>';
+    for (let x = x0 + tw; x < x0 + w; x += tw) s += '<line x1="' + x + '" y1="' + y0 + '" x2="' + x + '" y2="' + (y0 + h) + '" stroke="' + line + '" stroke-width="1.5"/>';
+    for (let y = y0 + th; y < y0 + h; y += th) s += '<line x1="' + x0 + '" y1="' + y + '" x2="' + (x0 + w) + '" y2="' + y + '" stroke="' + line + '" stroke-width="1.5"/>';
+    return s;
+  }
+  const SCENES = {
+    // кухня: квадратная плитка + каменная столешница
+    kitchen: () => tiles(0, 0, 400, 300, 50, 50, '#eef1ef', '#d9dfdc') +
+      '<rect x="0" y="292" width="400" height="16" fill="#3b3d3f"/><rect x="0" y="308" width="400" height="92" fill="#cfc6b8"/>' +
+      '<rect x="0" y="308" width="400" height="6" fill="#b9b0a2"/><line x1="200" y1="314" x2="200" y2="400" stroke="#b9b0a2" stroke-width="2"/>',
+    // ванная: вытянутая плитка + светлый пол
+    bath: () => tiles(0, 0, 400, 320, 100, 40, '#e3eaee', '#cbd6dc') +
+      '<rect x="0" y="320" width="400" height="80" fill="#f4f2ee"/><rect x="0" y="320" width="400" height="4" fill="#d9d4cc"/>',
+    // комната: окрашенная стена, подоконник, деревянный пол
+    room: () => '<rect width="400" height="400" fill="#efe9df"/>' +
+      '<rect x="50" y="0" width="300" height="70" fill="#dfe9ef"/><rect x="40" y="70" width="320" height="12" fill="#fbfaf7"/><rect x="40" y="82" width="320" height="4" fill="#d8d1c4"/>' +
+      '<rect x="0" y="336" width="400" height="64" fill="#c9a77f"/>' + [0, 1, 2].map((i) => '<line x1="0" y1="' + (350 + i * 18) + '" x2="400" y2="' + (350 + i * 18) + '" stroke="#b8946b" stroke-width="2"/>').join('') +
+      '<rect x="0" y="328" width="400" height="8" fill="#fbfaf7"/>',
+    // техпомещение: бетон и трубы
+    tech: () => '<rect width="400" height="400" fill="#dcdad6"/>' +
+      '<rect x="0" y="40" width="400" height="14" fill="#9aa1a8"/><rect x="0" y="66" width="400" height="14" fill="#2f6fd6" opacity=".55"/><rect x="0" y="92" width="400" height="14" fill="#e2382b" opacity=".45"/>' +
+      [70, 190, 310].map((x) => '<rect x="' + x + '" y="34" width="10" height="78" fill="#7d858d"/>').join('') +
+      '<rect x="0" y="340" width="400" height="60" fill="#bdbab4"/>',
+  };
+  const cache2 = {};
+  window.productImageAlt = function (img) {
+    const key = JSON.stringify(img);
+    if (cache2[key]) return cache2[key];
+    const scene = SCENE_OF[img.kind] || 'tech';
+    const body = (DRAW[img.kind] || DRAW.valve)(img);
+    // товар уменьшен и поставлен на столешницу / к стене
+    const place = scene === 'room' ? 'translate(70 90) scale(.68)' : scene === 'tech' ? 'translate(80 130) scale(.6)' : 'translate(70 52) scale(.68)';
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">' + SCENES[scene]() + '<g transform="' + place + '">' + body + '</g></svg>';
+    return (cache2[key] = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg));
+  };
 })();
