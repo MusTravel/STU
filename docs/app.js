@@ -683,6 +683,27 @@
   // Подвал
   $('#footer-cats').innerHTML = CATEGORIES.map((c) => '<li><a href="#cat-' + c.slug + '">' + c.name + '</a></li>').join('');
 
+  // =====================================================================
+  // АНИМАЦИЯ: карточки по очереди «всплывают» при появлении в зоне видимости
+  // =====================================================================
+  // Следим за #view: любые новые карточки (каталог, поиск, подборки) подхватываются автоматически.
+  // При системной настройке «уменьшить движение» эффект не включается.
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      const shown = entries.filter((e) => e.isIntersecting);
+      shown.forEach((e, i) => {
+        const el = e.target;
+        el.style.transitionDelay = Math.min(i * 50, 300) + 'ms'; // лесенка: 0, 50, 100… мс
+        el.classList.add('rv-in');
+        io.unobserve(el);
+        // после анимации убираем задержку, чтобы hover срабатывал сразу
+        setTimeout(() => { el.style.transitionDelay = ''; el.classList.remove('rv', 'rv-in'); }, 700 + Math.min(i * 50, 300));
+      });
+    }, { rootMargin: '0px 0px -40px 0px' });
+    const watch = (root) => $$('.card:not(.rv)', root).forEach((c) => { c.classList.add('rv'); io.observe(c); });
+    new MutationObserver(() => watch(view)).observe(view, { childList: true, subtree: true });
+  }
+
   window.addEventListener('hashchange', route);
   updateCounters();
   route();
