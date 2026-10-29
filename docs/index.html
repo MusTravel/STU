@@ -1,12 +1,12 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 </head><body>
-<title>СантехУрал демо-магазин</title>
+<title>СантехУрал демо 3</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Прототип нового интернет-магазина СантехУрал: адаптивный дизайн, умный поиск, корзина и оформление заказа">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Roboto:wght@400;500;700&display=swap">
 <style>
 /* Макет: светлый магазин в стиле divan.ru — белый фон, тёплые серые подложки под товар,
    пастельные промо-плашки, тёмно-зелёный акцент для действий. Mobile-first, таббар снизу на телефоне. */
@@ -412,6 +412,137 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
 .toast a { color: var(--tone-lemon); font-weight: 700; white-space: nowrap; }
 @media (min-width: 900px) { .toast { bottom: 24px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+
+/* =====================================================================
+   ТЕМА SPORTMASTER (демо 3): поверх базовых стилей демо 1.
+   Яркий синий для действий, красный для скидок, жёлтый для «хитов».
+   Плотные заголовки капсом (Roboto Condensed), наклонный логотип на синей плашке,
+   белые карточки с рамкой при наведении, цветные промо-баннеры. Прямые углы сохраняются.
+   ===================================================================== */
+:root {
+  --bg: #ffffff;
+  --surface: #f2f4f7;
+  --surface-2: #e6e9ee;
+  --ink: #111827;
+  --muted: #6b7280;
+  --line: #e2e5ea;
+  --accent: #0057e1;
+  --accent-hover: #0046b8;
+  --accent-ink: #ffffff;
+  --accent-soft: #e5eeff;
+  --sale: #e4002b;
+  --ok: #10893e;
+  --hit: #ffd400;
+  --hero-1: #ffd400;
+  --hero-2: #0057e1;
+  --hero-3: #111827;
+  --shadow: 0 12px 32px rgba(17, 24, 39, .14);
+  --shadow-lift: 0 8px 24px rgba(17, 24, 39, .12);
+  --font: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --display: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+}
+body { font-size: 14.5px; }
+h1, h2, h3, .sec-head h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; letter-spacing: .01em; }
+h1 { font-size: clamp(24px, 3vw, 34px); }
+h2 { font-size: clamp(20px, 2.2vw, 28px); }
+
+/* Шапка */
+.demo-bar { background: var(--accent); }
+.demo-bar b { color: var(--hit); }
+.logo-word { display: inline-block; background: var(--accent); color: #fff; font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase;
+  font-size: 18px; letter-spacing: .02em; padding: 7px 12px 6px; transform: skewX(-8deg); }
+@media (min-width: 900px) { .logo-word { font-size: 22px; padding: 8px 16px 7px; } }
+.btn-catalog { font-family: var(--display); text-transform: uppercase; letter-spacing: .03em; font-size: 16px; }
+.search-field { background: var(--bg); border: 2px solid var(--accent); }
+.search-field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.search-go { font-family: var(--display); text-transform: uppercase; font-size: 14px; letter-spacing: .03em; }
+.badge-count { background: var(--sale); }
+.h-cats { border-top: 1px solid var(--line); background: var(--bg); }
+.h-cats .wrap { display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none; padding-block: 10px; }
+.h-cats .wrap::-webkit-scrollbar { display: none; }
+.h-cats a { font-family: var(--display); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+.h-cats a:hover { color: var(--accent); }
+.h-cats a.hot { color: var(--sale); }
+
+/* Кнопки и чипы */
+.btn { font-family: var(--display); text-transform: uppercase; letter-spacing: .03em; font-size: 15px; font-weight: 700; }
+.btn-lg { font-size: 16px; }
+.chip { font-weight: 500; }
+.chip.on { background: var(--accent); color: #fff; }
+.sec-head a { color: var(--accent); }
+
+/* Промо: яркие плашки, крупный наклонный заголовок */
+.slide.t-lemon { background: var(--hero-1); color: var(--ink); }
+.slide.dark { background: var(--hero-2); color: #fff; }
+.slide.t-sand { background: var(--hero-3); color: #fff; }
+.slide h2 { font-style: italic; font-size: clamp(30px, 5vw, 56px); line-height: .95; }
+.slide .eyebrow { display: inline-block; align-self: flex-start; background: var(--sale); color: #fff; padding: 4px 10px; font-family: var(--display); }
+.slide .btn { background: var(--ink); color: #fff; }
+.slide.dark .btn, .slide.t-sand .btn { background: var(--hit); color: var(--ink); }
+.dots button { height: 4px; width: 24px; }
+.dots button.on { background: var(--accent); width: 40px; }
+
+/* Плитки категорий: светло-серые, подпись капсом, стрелка */
+.cat-tile { background: var(--surface) !important; border: 2px solid transparent; transition: border-color .15s; }
+.cat-tile:hover { transform: none; border-color: var(--accent); }
+.cat-tile b { font-family: var(--display); text-transform: uppercase; font-weight: 800; }
+.cat-tile small::after { content: " →"; color: var(--accent); font-weight: 700; }
+@media (min-width: 700px) { .cats { grid-template-columns: repeat(3, 1fr); } }
+
+/* Карточка товара: белая, рамка и тень при наведении */
+.card { padding: 8px; border: 1px solid transparent; transition: border-color .2s, box-shadow .2s; background: var(--bg); }
+.card-img { background: var(--surface); }
+.labels { top: 8px; left: 8px; }
+.lbl-sale, .lbl-hit, .lbl-new { font-family: var(--display); font-size: 12.5px; text-transform: uppercase; letter-spacing: .02em; }
+.lbl-sale { background: var(--sale); }
+.lbl-hit { background: var(--hit); color: var(--ink); }
+.lbl-new { background: var(--accent); color: #fff; }
+.price { font-size: 21px; font-weight: 700; }
+.price.sale { color: var(--sale); }
+.card .name { font-size: 14px; }
+.card .name:hover { color: var(--accent); }
+.card .btn { height: 42px; font-size: 15px; }
+.card .stepper { background: var(--accent-soft); }
+@media (hover: hover) {
+  .card:hover { border-color: var(--line); box-shadow: var(--shadow-lift); }
+  .card:hover .card-img { transform: none; box-shadow: none; }
+}
+@media (min-width: 700px) { .price { font-size: 22px; } }
+.rail { padding-inline: 2px; }
+
+/* Преимущества: иконка в синем квадрате */
+.perk { background: var(--bg); border: 1px solid var(--line); }
+.perk svg { color: #fff; background: var(--accent); padding: 8px; width: 40px; height: 40px; }
+.perk b { font-family: var(--display); text-transform: uppercase; font-size: 16px; }
+
+/* Калькулятор: синяя плашка */
+.calc { background: var(--accent); color: #fff; }
+.calc .muted, .calc .field label { color: rgba(255, 255, 255, .8); }
+.calc .btn-primary { background: var(--hit); color: var(--ink); }
+.calc .btn-primary:hover { background: #ffe14d; }
+.calc-link { color: var(--hit); }
+
+/* Каталог, товар, корзина */
+.f-group > b { font-family: var(--display); text-transform: uppercase; font-size: 15px; }
+.buybox { border: 2px solid var(--line); }
+.buybox .price { font-size: 34px; }
+.buybox .disc { font-family: var(--display); }
+.delivery svg { color: var(--accent); }
+.summary { border: 2px solid var(--line); background: var(--bg); }
+.fs legend { font-family: var(--display); text-transform: uppercase; }
+.done .ok-ic { background: var(--accent); color: #fff; }
+
+/* Поиск-подсказки */
+.sg-note { background: var(--hit); }
+.sg-row .nm mark { background: var(--accent-soft); }
+
+/* Подвал: тёмный */
+.footer { background: var(--ink); color: #fff; }
+.footer ul, .footer .muted, .footer .copy { color: rgba(255, 255, 255, .65); }
+.footer a:hover { color: #fff; }
+.footer b { font-family: var(--display); text-transform: uppercase; }
+.footer .copy { border-top-color: rgba(255, 255, 255, .15); }
+.toast a { color: var(--hit); }
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
@@ -426,8 +557,7 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
   </div></div>
   <div class="h-main"><div class="wrap">
     <a class="logo" href="#home" aria-label="СантехУрал, на главную">
-      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7.5 6.5 10.6 6.5 14a5.5 5.5 0 0 0 11 0C17.5 10.6 15 7.5 12 3Z" fill="#fff"/></svg></span>
-      <span>СантехУрал<small>сантехника и отопление</small></span>
+      <span class="logo-word">Сантехурал</span>
     </a>
     <button class="btn-catalog" id="btn-catalog" aria-expanded="false">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Каталог
@@ -453,6 +583,11 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
       </a>
     </nav>
   </div></div>
+  <nav class="h-cats" aria-label="Категории"><div class="wrap">
+    <a href="#cat-moyki">Мойки</a><a href="#cat-g-lauf">Смесители G-Lauf</a><a href="#cat-frap">Смесители FRAP</a>
+    <a href="#cat-radiatory">Радиаторы</a><a href="#cat-komplektuyushchie">Комплектующие</a><a href="#cat-valtec">Valtec</a>
+    <a href="#catalog" class="hot">Все товары</a>
+  </div></nav>
   <div class="mega" id="mega" hidden></div>
 </header>
 
@@ -460,7 +595,7 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
 
 <footer class="footer"><div class="wrap">
   <div class="f-brand">
-    <a class="logo" href="#home"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7.5 6.5 10.6 6.5 14a5.5 5.5 0 0 0 11 0C17.5 10.6 15 7.5 12 3Z" fill="#fff"/></svg></span><span>СантехУрал</span></a>
+    <a class="logo" href="#home"><span class="logo-word">Сантехурал</span></a>
     <span class="muted">Сантехника, отопление и водоснабжение. Остатки и цены синхронизируются с 1С.</span>
     <b style="margin:6px 0 0">8 (800) 000-00-00</b>
   </div>
