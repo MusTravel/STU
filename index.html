@@ -565,6 +565,9 @@ h2 { font-size: clamp(18px, 2vw, 24px); }
 .labels { right: 44px; }
 .cat-tile b { max-width: 55%; }
 .cat-tile img { width: 50%; }
+/* Реальные фото на белом фоне: белое растворяется в серой подложке */
+.card-img img, .gallery img, .cat-tile img, .sg-row img, .c-item img, .mega-col img, .slide img { mix-blend-mode: multiply; }
+.card-img img.alt { mix-blend-mode: normal; }
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
