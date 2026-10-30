@@ -39,9 +39,10 @@ GitHub Pages: Settings → Pages → Branch: эта ветка, папка `/doc
 | https://mustravel.github.io/STU/v2/ | Демо 2: дизайн в стиле lamoda.ru (собрано из ветки `lamoda-demo`) |
 | https://mustravel.github.io/STU/v3/ | Демо 3: дизайн в стиле sportmaster.ru (собрано из ветки `sportmaster-demo`) |
 | https://mustravel.github.io/STU/v4/ | Демо 4: дизайн sportmaster + шрифты lamoda (собрано из ветки `sm-lamoda-fonts`) |
+| https://mustravel.github.io/STU/v5/ | Демо 5: стандартное оформление santechural.ru (собрано из ветки `santechural-classic`) |
 
-Обновить демо 2, 3 или 4: в ветке `lamoda-demo` / `sportmaster-demo` / `sm-lamoda-fonts` выполнить `./build.sh`,
-затем скопировать `docs/index.html` и `docs/*.js` в `docs/v2/` / `docs/v3/` / `docs/v4/` этой ветки.
+Обновить демо 2–5: в ветке `lamoda-demo` / `sportmaster-demo` / `sm-lamoda-fonts` / `santechural-classic` выполнить `./build.sh`,
+затем скопировать `docs/index.html`, `docs/*.js` и `docs/img/` в `docs/v2/` … `docs/v5/` этой ветки.
 
 ## Проверка поиска (примеры)
 
