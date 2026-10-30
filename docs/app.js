@@ -81,7 +81,7 @@
   function card(p) {
     return '<article class="card" data-card="' + p.id + '">' +
       '<a class="card-img" href="#p-' + p.id + '"><img loading="lazy" src="' + productImage(p.img) + '" alt="' + esc(p.name) + '">' +
-        (productImageAlt(p.img) ? '<img class="alt' + (p.img.photo2 ? ' alt-photo' : '') + '" loading="lazy" src="' + productImageAlt(p.img) + '" alt="" aria-hidden="true">' : '') + labels(p) + '</a>' +
+        (productImageAlt(p.img) ? '<img class="alt' + (p.img.photo2 && !p.img.photo2Full ? ' alt-photo' : '') + '" loading="lazy" src="' + productImageAlt(p.img) + '" alt="" aria-hidden="true">' : '') + labels(p) + '</a>' +
       '<button type="button" class="fav' + (favs.includes(p.id) ? ' on' : '') + '" data-fav="' + p.id + '" aria-label="В избранное">' + IC.heart + '</button>' +
       '<div class="price-row"><span class="price' + (p.old ? ' sale' : '') + '">' + money(p.price) + '</span>' + (p.old ? '<span class="old">' + money(p.old) + '</span>' : '') + '</div>' +
       '<a class="name" href="#p-' + p.id + '">' + esc(p.name) + '</a>' +
