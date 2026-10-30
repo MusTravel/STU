@@ -181,6 +181,7 @@
   // photo — основное фото, photo2 — второй кадр при наведении. Без фото остаётся SVG-иллюстрация.
   // В рабочей версии фото приходят из карточек товаров Битрикса.
   const PHOTOS = [
+    { cat: ['frap'], re: /^Смеситель для раковины/, color: ['черный матовый', 'графит'], photo: 'img/frap-basin-black.webp' },
     { cat: ['radiatory'], re: /^Радиатор стальной панельный/, photo: 'img/radiator-panel.webp' },
     { cat: ['moyki'], re: /искусственного камня/, color: ['черный', 'графит'], photo: 'img/sink-stone-black.webp' },
     { cat: ['g-lauf', 'frap'], re: /^Смеситель для кухни/, color: 'хром', photo: 'img/faucet-kitchen-pullout.webp' },
@@ -193,7 +194,7 @@
     if (m) { p.img.photo = m.photo; if (m.photo2) p.img.photo2 = m.photo2; }
   });
   // Обложки разделов
-  const COVERS = { 'moyki': 'img/sink-stone-black.webp', 'radiatory': 'img/radiator-panel.webp', 'g-lauf': 'img/faucet-kitchen-pullout.webp', 'komplektuyushchie': 'img/thermohead-valve.webp', 'valtec': 'img/valtec-collector.webp' };
+  const COVERS = { 'moyki': 'img/sink-stone-black.webp', 'radiatory': 'img/radiator-panel.webp', 'frap': 'img/frap-basin-black.webp', 'g-lauf': 'img/faucet-kitchen-pullout.webp', 'komplektuyushchie': 'img/thermohead-valve.webp', 'valtec': 'img/valtec-collector.webp' };
   CATEGORIES.forEach(function (c) { if (COVERS[c.slug]) c.img = Object.assign({}, c.img, { photo: COVERS[c.slug] }); });
 
   window.SHOP = { CATEGORIES: CATEGORIES, PRODUCTS: PRODUCTS };
