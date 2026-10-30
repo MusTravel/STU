@@ -1,9 +1,9 @@
-<title>СантехУрал демо-магазин</title>
+<title>СантехУрал демо 5</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Прототип нового интернет-магазина СантехУрал: адаптивный дизайн, умный поиск, корзина и оформление заказа">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap">
 <style>
 /* Макет: светлый магазин в стиле divan.ru — белый фон, тёплые серые подложки под товар,
    пастельные промо-плашки, тёмно-зелёный акцент для действий. Mobile-first, таббар снизу на телефоне. */
@@ -424,22 +424,159 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
   .cat-tile img[src^="img/"] { height: 46%; max-width: 56%; right: 8px; bottom: 34px; } /* над подписью «N товаров» */
   .cat-tile:has(img[src^="img/"]) b { max-width: 100%; }
 }
+
+/* =====================================================================
+   ДЕМО 5: стандартное оформление santechural.ru (по сохранённым страницам сайта).
+   Синий #1976D2 для кнопок и ссылок, шрифт Ubuntu, белый фон, серые полосы #F2F2F2,
+   сетки категорий и товаров с тонкими рамками, текст в карточках по центру,
+   бейджи ХИТ / НОВИНКА как на сайте, цена «₽/шт». Углы прямые.
+   ===================================================================== */
+:root {
+  --bg: #ffffff;
+  --surface: #f2f2f2;
+  --surface-2: #e7e7e7;
+  --ink: #333333;
+  --muted: #888888;
+  --line: #e7e7e7;
+  --accent: #1976d2;
+  --accent-hover: #2585e5;
+  --accent-ink: #ffffff;
+  --accent-soft: #ecf4fc;
+  --sale: #e53935;
+  --ok: #3c9a3f;
+  --st-hit: #2992d9;
+  --st-new: #5cb85c;
+  --st-band: #f9f9f9;
+  --shadow: 0 6px 20px rgba(0, 0, 0, .1);
+  --shadow-lift: 0 4px 16px rgba(0, 0, 0, .08);
+  --font: "Ubuntu", Arial, Helvetica, sans-serif;
+}
+body { font-size: 14px; }
+h1, h2, h3 { font-weight: 500; letter-spacing: 0; }
+h1 { font-size: clamp(22px, 2.4vw, 30px); }
+h2 { font-size: clamp(18px, 1.8vw, 22px); }
+
+/* Шапка */
+.demo-bar { background: var(--accent); }
+.demo-bar b { color: #fff; }
+.h-top { font-size: 12px; }
+.h-top a { color: var(--muted); }
+.h-top a:hover { color: var(--accent); }
+.h-top .phone { color: var(--accent); font-weight: 500; font-size: 14px; display: flex; flex-direction: column; align-items: center; line-height: 1.25; }
+.h-top .phone small { color: var(--ink); font-size: 12px; font-weight: 400; }
+.h-top .addr { color: var(--muted); }
+.logo-img { height: 34px; width: auto; display: block; }
+@media (min-width: 900px) { .logo-img { height: 46px; } }
+.btn-call { display: none; }
+@media (min-width: 900px) {
+  .h-main .wrap { grid-template-columns: auto auto 1fr auto auto; }
+  .btn-call { display: inline-flex; align-items: center; height: 38px; padding: 0 18px; border: 1px solid var(--accent); color: var(--accent); font-size: 13px; white-space: nowrap; }
+  .btn-call:hover { background: var(--accent); color: #fff; }
+}
+.btn-catalog { font-weight: 500; }
+.search-field { background: var(--bg); border: 1px solid var(--line); }
+.search-field:focus-within { border-color: var(--accent); }
+.search-go { font-weight: 500; }
+.badge-count { background: var(--accent); }
+.h-cats { border-top: 1px solid var(--line); background: var(--bg); }
+.h-cats .wrap { display: flex; gap: 28px; overflow-x: auto; scrollbar-width: none; padding-block: 10px; }
+.h-cats .wrap::-webkit-scrollbar { display: none; }
+.h-cats a { font-size: 13px; font-weight: 500; text-transform: uppercase; white-space: nowrap; }
+.h-cats a:hover { color: var(--accent); }
+
+/* Кнопки, ссылки, чипы */
+.btn { font-weight: 500; font-size: 14px; }
+.btn-ghost { background: var(--bg); border: 1px solid var(--accent); color: var(--accent); }
+.btn-ghost:hover { background: var(--accent); color: #fff; }
+.chip { background: var(--bg); border: 1px solid var(--line); }
+.chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.sec-head a, .calc-link { color: var(--accent); }
+
+/* Слайдер: баннеры сайта целиком */
+.slide.slide-banner { padding: 0; min-height: 0; background: var(--surface); display: block; }
+.slide.slide-banner img { position: static; width: 100%; max-width: 100%; height: auto; aspect-ratio: 1920 / 450; object-fit: cover; transform: none; opacity: 1; mix-blend-mode: normal; }
+.dots button { width: 8px; height: 8px; background: #ccc; }
+.dots button.on { width: 8px; background: var(--accent); }
+
+/* Преимущества: круглые иконки на серой полосе, как на сайте */
+.perks { background: var(--st-band); padding: 18px; gap: 18px; }
+.perk { background: transparent; flex-direction: row; align-items: center; gap: 14px; padding: 0; }
+.perk svg { flex: none; width: 64px; height: 64px; padding: 18px; border-radius: 50%; background: #fff; color: var(--ink); box-shadow: 0 2px 10px rgba(0, 0, 0, .06); }
+.perk b { font-weight: 500; font-size: 14px; }
+.perk span { display: none; }
+
+/* Категории: сетка с рамками, картинка сверху, подпись капсом по центру */
+.cats { gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.cat-tile { background: var(--bg) !important; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-height: 0; padding: 18px 12px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 8px; text-align: center; }
+.cat-tile:hover { transform: none; box-shadow: var(--shadow-lift); z-index: 1; }
+.cat-tile img, .cat-tile img[src^="img/"] { position: static; order: -1; width: auto; height: 96px; max-width: 80%; aspect-ratio: 1; object-fit: contain; right: auto; bottom: auto; top: auto; }
+.cat-tile b, .cat-tile:has(img[src^="img/"]) b { max-width: none; font-size: 14px; font-weight: 500; text-transform: uppercase; }
+.cat-tile small { display: none; }
+@media (min-width: 900px) { .cats { grid-template-columns: repeat(6, 1fr); } .cat-tile img, .cat-tile img[src^="img/"] { height: 110px; } }
+
+/* Карточки товаров: сетка с рамками, всё по центру, порядок «фото → название → наличие → цена» */
+.grid, .rail { gap: 0; }
+.grid { border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.rail { border-left: 1px solid var(--line); padding-top: 0; }
+.card { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 14px; gap: 8px; text-align: center; background: var(--bg); }
+.rail .card { border-top: 1px solid var(--line); }
+.card-img { background: var(--bg); order: 0; }
+.card-img img { padding: 8%; }
+.card .name { order: 1; font-weight: 500; font-size: 13px; color: var(--ink); }
+.card .name:hover { color: var(--accent); }
+.card .stock { order: 2; justify-content: center; font-weight: 400; color: var(--muted); }
+.card .stock::before { display: none; }
+.card .price-row { order: 3; justify-content: center; }
+.card .actions { order: 4; }
+.price { font-weight: 700; font-size: 18px; }
+.price::after { content: "/шт"; font-weight: 700; }
+.old::after { content: ""; }
+.labels { top: 0; left: 0; gap: 3px; }
+.lbl-sale, .lbl-hit, .lbl-new { font-size: 10.5px; font-weight: 500; text-transform: uppercase; padding: 3px 7px; letter-spacing: .02em; }
+.lbl-hit { background: var(--st-hit); color: #fff; }
+.lbl-new { background: var(--st-new); color: #fff; }
+.lbl-sale { background: var(--sale); }
+@media (hover: hover) { .card:hover { box-shadow: var(--shadow-lift); z-index: 1; } .card:hover .card-img { transform: none; box-shadow: none; } }
+
+/* Калькулятор: серая полоса */
+.calc { background: var(--st-band); border: 1px solid var(--line); }
+
+/* Страница товара: рамка вокруг блока, кнопки как на сайте */
+.pdp { border: 1px solid var(--line); padding: 20px; }
+.gallery { background: var(--bg); }
+.buybox { border: 0; padding: 0; }
+.buybox .price { font-size: 28px; }
+.delivery { background: var(--st-band); }
+.f-group > b { font-weight: 500; }
+
+/* Корзина и оформление */
+.summary { background: var(--bg); border: 1px solid var(--line); }
+.opt:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+
+/* Подсказки поиска */
+.sg-note { background: var(--accent-soft); }
+.sg-row .nm mark { background: var(--accent-soft); }
+
+/* Подвал: светло-серый, как на сайте */
+.footer { background: #f6f6f7; }
+.footer b { font-weight: 500; }
+.footer .logo-img { height: 40px; }
+.toast a { color: #9fd0ff; }
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
 
 <header class="header" id="header">
   <div class="h-top"><div class="wrap">
-    <a href="#home">Екатеринбург</a>
-    <a href="#info-delivery">Доставка и оплата</a>
+    <a href="#info-delivery">Условия доставки</a>
     <a href="#info-opt">Оптовым покупателям</a>
     <a href="#info-contacts">Контакты</a>
-    <span class="phone">8 (800) 000-00-00</span>
+    <span class="phone">+7 (3532) 30-55-45<small>Звоните с 9:00 до 18:00</small></span>
+    <span class="addr">Оренбург, ул. Монтажников, д.17/2</span>
   </div></div>
   <div class="h-main"><div class="wrap">
     <a class="logo" href="#home" aria-label="СантехУрал, на главную">
-      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7.5 6.5 10.6 6.5 14a5.5 5.5 0 0 0 11 0C17.5 10.6 15 7.5 12 3Z" fill="#fff"/></svg></span>
-      <span>СантехУрал<small>сантехника и отопление</small></span>
+      <img class="logo-img" src="img/st-logo.webp" alt="СанТехУрал — тепло и вода" width="480" height="121">
     </a>
     <button class="btn-catalog" id="btn-catalog" aria-expanded="false">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Каталог
@@ -454,6 +591,7 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
       </div>
       <div class="suggest" id="suggest" hidden></div>
     </form>
+    <a class="btn-call" href="#info-contacts">Заказать звонок</a>
     <nav class="h-icons">
       <a class="h-icon" href="#favorites" aria-label="Избранное">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
@@ -465,6 +603,10 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
       </a>
     </nav>
   </div></div>
+  <nav class="h-cats" aria-label="Категории"><div class="wrap">
+    <a href="#cat-moyki">Мойки</a><a href="#cat-g-lauf">Смесители G-Lauf</a><a href="#cat-frap">Смесители FRAP</a>
+    <a href="#cat-radiatory">Радиаторы</a><a href="#cat-komplektuyushchie">Комплектующие</a><a href="#cat-valtec">Valtec</a>
+  </div></nav>
   <div class="mega" id="mega" hidden></div>
 </header>
 
@@ -472,9 +614,10 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
 
 <footer class="footer"><div class="wrap">
   <div class="f-brand">
-    <a class="logo" href="#home"><span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C9 7.5 6.5 10.6 6.5 14a5.5 5.5 0 0 0 11 0C17.5 10.6 15 7.5 12 3Z" fill="#fff"/></svg></span><span>СантехУрал</span></a>
-    <span class="muted">Сантехника, отопление и водоснабжение. Остатки и цены синхронизируются с 1С.</span>
-    <b style="margin:6px 0 0">8 (800) 000-00-00</b>
+    <a class="logo" href="#home"><img class="logo-img" src="img/st-logo.webp" alt="СанТехУрал — тепло и вода" width="480" height="121"></a>
+    <span class="muted">Компания «СанТехУрал» более 20 лет занимается оптовыми продажами сантехники на территории Оренбургской области.</span>
+    <b style="margin:6px 0 0">+7 (3532) 30-55-45</b>
+    <span class="muted">305545@bk.ru · Оренбург, ул. Монтажников, д.17/2</span>
   </div>
   <div><b>Каталог</b><ul id="footer-cats"></ul></div>
   <div><b>Покупателям</b><ul><li><a href="#info-delivery">Доставка и оплата</a></li><li><a href="#info-opt">Оптовым покупателям</a></li><li><a href="#info-contacts">Контакты</a></li></ul></div>

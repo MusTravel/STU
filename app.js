@@ -108,14 +108,14 @@
     const hits = pinned.length >= 5 ? pinned : pinned.concat(PRODUCTS.filter((p) => p.hit && !pinned.includes(p)));
     const sale = PRODUCTS.filter((p) => p.old).sort((a, b) => discount(b) - discount(a));
     const slides = [
-      { cls: 't-lemon', eyebrow: 'Отопительный сезон', title: 'Стальные радиаторы со склада', text: 'Типы 11, 22, 33 и нижнее подключение. Подберём по площади комнаты за минуту.', btn: 'Выбрать радиатор', href: '#cat-radiatory', img: { kind: 'radiator', color: 'белый', h: 500, l: 1200, panels: 2 } },
-      { cls: 'dark', eyebrow: 'FRAP и G-Lauf', title: 'Смесители для кухни и ванной', text: 'Хром, чёрный матовый, золото. Гарантия производителя до 5 лет.', btn: 'Смотреть смесители', href: '#cat-frap', img: { kind: 'faucet-kitchen', color: 'золото' } },
-      { cls: 't-sand', eyebrow: 'Для монтажа', title: 'Всё для водоснабжения VALTEC', text: 'Шаровые краны, коллекторы, фитинги и металлопластиковая труба.', btn: 'Перейти в Valtec', href: '#cat-valtec', img: { kind: 'valve', color: 'красный' } },
+      { banner: 'img/st-banner-boilers.webp', alt: 'В компании СанТехУрал спеццена на котлы. Подробности у менеджеров', href: '#info-contacts' },
+      { banner: 'img/st-banner-contest.webp', alt: 'Акция для монтажников: розыгрыш призов', href: '#info-opt' },
     ];
     view.innerHTML =
       '<div class="wrap hero">' +
-        '<div class="slides" id="slides">' + slides.map((s) =>
-          '<a class="slide ' + s.cls + '" href="' + s.href + '"><div class="copy"><span class="eyebrow">' + s.eyebrow + '</span><h2>' + s.title + '</h2><p>' + s.text + '</p><span class="btn btn-primary">' + s.btn + '</span></div><img src="' + productImage(s.img) + '" alt=""></a>').join('') +
+        '<div class="slides" id="slides">' + slides.map((s) => s.banner
+          ? '<a class="slide slide-banner" href="' + s.href + '"><img src="' + s.banner + '" alt="' + s.alt + '"></a>'
+          : '<a class="slide ' + s.cls + '" href="' + s.href + '"><div class="copy"><span class="eyebrow">' + s.eyebrow + '</span><h2>' + s.title + '</h2><p>' + s.text + '</p><span class="btn btn-primary">' + s.btn + '</span></div><img src="' + productImage(s.img) + '" alt=""></a>').join('') +
         '</div><div class="dots" id="dots">' + slides.map((_, i) => '<button type="button" aria-label="Слайд ' + (i + 1) + '"' + (i ? '' : ' class="on"') + '></button>').join('') + '</div>' +
       '</div>' +
       '<section class="section wrap"><div class="sec-head"><h2>Каталог</h2></div><div class="cats">' +
@@ -531,7 +531,7 @@
   const INFO = {
     delivery: ['Доставка и оплата', 'Самовывоз со склада бесплатно: товар в наличии готов к выдаче в день заказа. Доставка по городу и области на следующий день, стоимость зависит от веса и адреса. Оплата наличными, картой при получении, онлайн или по счёту для организаций.'],
     opt: ['Оптовым покупателям', 'Для монтажных организаций и магазинов: персональные цены, отсрочка платежа, резерв товара под объект и закрывающие документы. Цены в личном кабинете подтягиваются из 1С по типу цен клиента.'],
-    contacts: ['Контакты', 'Телефон: 8 (800) 000-00-00. Склад и пункт выдачи: адрес и режим работы перенесём с текущего сайта.'],
+    contacts: ['Контакты', 'Телефон: +7 (3532) 30-55-45, звоните с 9:00 до 18:00. E-mail: 305545@bk.ru. Адрес: Оренбург, ул. Монтажников, д.17/2.'],
   };
   function pageInfo(k) {
     const i = INFO[k]; if (!i) return pageNotFound();
