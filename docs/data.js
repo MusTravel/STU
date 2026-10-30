@@ -201,6 +201,7 @@
   // photo — основное фото, photo2 — второй кадр при наведении.
   const HITS = [
     { id: 102, photo: 'img/sink-stone-black.webp', photo2: 'img/hit1-sink-steel.webp' },
+    { id: 147, photo: 'img/radiator-panel.webp', photo2: 'img/hit3-radiator-long.webp' },
   ];
   HITS.forEach(function (h) {
     const p = PRODUCTS.find(function (x) { return x.id === h.id; });
