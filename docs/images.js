@@ -220,6 +220,7 @@
 
   const cache = {};
   window.productImage = function (img) {
+    if (img.photo) return img.photo; // реальное фото товара
     const key = JSON.stringify(img);
     if (cache[key]) return cache[key];
     const body = (DRAW[img.kind] || DRAW.valve)(img);
@@ -261,6 +262,7 @@
   };
   const cache2 = {};
   window.productImageAlt = function (img) {
+    if (img.photo) return img.photo2 || ''; // у товара с фото — второе фото или ничего
     const key = JSON.stringify(img);
     if (cache2[key]) return cache2[key];
     const scene = SCENE_OF[img.kind] || 'tech';

@@ -577,6 +577,9 @@ h2 { font-weight: 700; font-size: clamp(18px, 2vw, 24px); letter-spacing: 0; }
 .footer b { text-transform: uppercase; letter-spacing: var(--caps); font-size: 12px; }
 .tab.on { color: var(--ink); }
 .toast a { color: #ffffff; text-decoration: underline; }
+/* Реальные фото на белом фоне: белое растворяется в серой подложке */
+.card-img img, .gallery img, .cat-tile img, .sg-row img, .c-item img, .mega-col img, .slide img { mix-blend-mode: multiply; }
+.card-img img.alt { mix-blend-mode: normal; }
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
