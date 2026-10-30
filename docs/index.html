@@ -419,6 +419,14 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
 .card-img img.alt.alt-photo { padding: 10%; object-fit: contain; mix-blend-mode: multiply; }
 .card-img img:not(.alt) { transition: opacity .35s ease, transform .3s; }
 @media (hover: hover) { .card:hover .card-img:has(.alt-photo) img:not(.alt) { opacity: 0; } }
+/* Фото-обложки в плитках разделов: товар целиком в правой нижней части, не заходит на заголовок
+   (рисованные SVG-картинки этим правилом не затрагиваются — у них src начинается с data:) */
+.cat-tile img[src^="img/"] { top: auto; right: 12px; bottom: 12px; width: auto; height: 70%; max-width: 48%; aspect-ratio: 1; object-fit: contain; }
+.cat-tile:has(img[src^="img/"]) b { max-width: 50%; }
+@media (max-width: 699px) {
+  .cat-tile img[src^="img/"] { height: 56%; max-width: 62%; right: 8px; bottom: 8px; }
+  .cat-tile:has(img[src^="img/"]) b { max-width: 100%; }
+}
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
