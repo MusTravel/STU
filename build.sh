@@ -12,5 +12,6 @@ mkdir -p docs
   echo '</body></html>'
 } > docs/index.html
 cp data.js images.js search.js app.js docs/
+mkdir -p docs/img && cp img/* docs/img/
 touch docs/.nojekyll
 echo "docs/ собран"

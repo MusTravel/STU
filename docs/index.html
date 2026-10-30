@@ -412,6 +412,9 @@ textarea.input { height: auto; min-height: 90px; padding: 12px 14px; resize: ver
 .toast a { color: var(--tone-lemon); font-weight: 700; white-space: nowrap; }
 @media (min-width: 900px) { .toast { bottom: 24px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+/* Реальные фото на белом фоне: белое растворяется в серой подложке */
+.card-img img, .gallery img, .cat-tile img, .sg-row img, .c-item img, .mega-col img, .slide img { mix-blend-mode: multiply; }
+.card-img img.alt { mix-blend-mode: normal; }
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
