@@ -197,5 +197,17 @@
   const COVERS = { 'moyki': 'img/sink-stone-black.webp', 'radiatory': 'img/radiator-panel.webp', 'frap': 'img/frap-basin-black.webp', 'g-lauf': 'img/faucet-kitchen-pullout.webp', 'komplektuyushchie': 'img/thermohead-valve.webp', 'valtec': 'img/valtec-collector.webp' };
   CATEGORIES.forEach(function (c) { if (COVERS[c.slug]) c.img = Object.assign({}, c.img, { photo: COVERS[c.slug] }); });
 
-  window.SHOP = { CATEGORIES: CATEGORIES, PRODUCTS: PRODUCTS };
+  // ---------- Хиты продаж на главной: товары, порядок и фото задаются вручную ----------
+  // photo — основное фото, photo2 — второй кадр при наведении.
+  const HITS = [
+    { id: 103, photo: 'img/hit1-sink-steel.webp', photo2: 'img/sink-stone-black.webp' },
+  ];
+  HITS.forEach(function (h) {
+    const p = PRODUCTS.find(function (x) { return x.id === h.id; });
+    if (!p) return;
+    p.hit = true;
+    p.img = Object.assign({}, p.img, { photo: h.photo, photo2: h.photo2 });
+  });
+
+  window.SHOP = { CATEGORIES: CATEGORIES, PRODUCTS: PRODUCTS, HITS: HITS.map(function (h) { return h.id; }) };
 })();
