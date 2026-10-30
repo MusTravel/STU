@@ -540,6 +540,9 @@ h2 { font-size: clamp(20px, 2.2vw, 28px); }
 .footer b { font-family: var(--display); text-transform: uppercase; }
 .footer .copy { border-top-color: rgba(255, 255, 255, .15); }
 .toast a { color: var(--hit); }
+/* Реальные фото на белом фоне: белое растворяется в серой подложке */
+.card-img img, .gallery img, .cat-tile img, .sg-row img, .c-item img, .mega-col img, .slide img { mix-blend-mode: multiply; }
+.card-img img.alt { mix-blend-mode: normal; }
 </style>
 
 <div class="demo-bar"><div class="wrap"><span><b>Демо-прототип</b> нового сайта santechural.ru · товары, цены и остатки условные</span></div></div>
