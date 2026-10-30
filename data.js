@@ -181,17 +181,18 @@
   // photo — основное фото, photo2 — второй кадр при наведении. Без фото остаётся SVG-иллюстрация.
   // В рабочей версии фото приходят из карточек товаров Битрикса.
   const PHOTOS = [
+    { cat: ['moyki'], re: /искусственного камня/, color: ['черный', 'графит'], photo: 'img/sink-stone-black.webp' },
     { cat: ['g-lauf', 'frap'], re: /^Смеситель для кухни/, color: 'хром', photo: 'img/faucet-kitchen-pullout.webp' },
     { cat: ['valtec'], re: /^Коллектор/, photo: 'img/valtec-collector.webp', photo2: 'img/valtec-collector-detail.webp' },
     { cat: ['komplektuyushchie'], re: /^Термоголовка|^Клапан термостатический угловой/, photo: 'img/thermohead-valve.webp' },
     { cat: ['komplektuyushchie'], re: /^Комплект заглушек|^Кронштейн для стального/, photo: 'img/radiator-kit.webp' },
   ];
   PRODUCTS.forEach(function (p) {
-    const m = PHOTOS.find(function (x) { return x.cat.includes(p.cat) && x.re.test(p.name) && (!x.color || p.img.color === x.color); });
+    const m = PHOTOS.find(function (x) { return x.cat.includes(p.cat) && x.re.test(p.name) && (!x.color || [].concat(x.color).includes(p.img.color)); });
     if (m) { p.img.photo = m.photo; if (m.photo2) p.img.photo2 = m.photo2; }
   });
   // Обложки разделов
-  const COVERS = { 'g-lauf': 'img/faucet-kitchen-pullout.webp', 'komplektuyushchie': 'img/thermohead-valve.webp', 'valtec': 'img/valtec-collector.webp' };
+  const COVERS = { 'moyki': 'img/sink-stone-black.webp', 'g-lauf': 'img/faucet-kitchen-pullout.webp', 'komplektuyushchie': 'img/thermohead-valve.webp', 'valtec': 'img/valtec-collector.webp' };
   CATEGORIES.forEach(function (c) { if (COVERS[c.slug]) c.img = Object.assign({}, c.img, { photo: COVERS[c.slug] }); });
 
   window.SHOP = { CATEGORIES: CATEGORIES, PRODUCTS: PRODUCTS };
