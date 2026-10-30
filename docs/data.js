@@ -200,7 +200,7 @@
   // ---------- Хиты продаж на главной: товары, порядок и фото задаются вручную ----------
   // photo — основное фото, photo2 — второй кадр при наведении.
   const HITS = [
-    { id: 103, photo: 'img/hit1-sink-steel.webp', photo2: 'img/sink-stone-black.webp' },
+    { id: 102, photo: 'img/sink-stone-black.webp', photo2: 'img/hit1-sink-steel.webp' },
   ];
   HITS.forEach(function (h) {
     const p = PRODUCTS.find(function (x) { return x.id === h.id; });
