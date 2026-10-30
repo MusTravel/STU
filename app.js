@@ -82,7 +82,7 @@
   function card(p) {
     return '<article class="card" data-card="' + p.id + '">' +
       '<a class="card-img" href="#p-' + p.id + '"><img loading="lazy" src="' + productImage(p.img) + '" alt="' + esc(p.name) + '">' +
-        (productImageAlt(p.img) ? '<img class="alt" loading="lazy" src="' + productImageAlt(p.img) + '" alt="" aria-hidden="true">' : '') + labels(p) + '</a>' +
+        (productImageAlt(p.img) ? '<img class="alt' + (p.img.photo2 ? ' alt-photo' : '') + '" loading="lazy" src="' + productImageAlt(p.img) + '" alt="" aria-hidden="true">' : '') + labels(p) + '</a>' +
       '<button type="button" class="fav' + (favs.includes(p.id) ? ' on' : '') + '" data-fav="' + p.id + '" aria-label="В избранное">' + IC.heart + '</button>' +
       '<div class="price-row"><span class="price' + (p.old ? ' sale' : '') + '">' + money(p.price) + '</span>' + (p.old ? '<span class="old">' + money(p.old) + '</span>' : '') + '</div>' +
       '<div class="brand">' + esc(p.brand || catBy[p.cat].short) + '</div>' +
@@ -105,7 +105,9 @@
   // ГЛАВНАЯ
   // =====================================================================
   function pageHome() {
-    const hits = PRODUCTS.filter((p) => p.hit);
+    // Сначала хиты, заданные вручную (SHOP.HITS); когда их 5 и больше — в блоке только они
+    const pinned = (window.SHOP.HITS || []).map((id) => byId[id]).filter(Boolean);
+    const hits = pinned.length >= 5 ? pinned : pinned.concat(PRODUCTS.filter((p) => p.hit && !pinned.includes(p)));
     const sale = PRODUCTS.filter((p) => p.old).sort((a, b) => discount(b) - discount(a));
     const slides = [
       { cls: 't-lemon', eyebrow: 'Отопительный сезон', title: 'Стальные радиаторы со склада', text: 'Типы 11, 22, 33 и нижнее подключение. Подберём по площади комнаты за минуту.', btn: 'Выбрать радиатор', href: '#cat-radiatory', img: { kind: 'radiator', color: 'белый', h: 500, l: 1200, panels: 2 } },
