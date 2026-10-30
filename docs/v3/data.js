@@ -201,13 +201,20 @@
   // photo — основное фото, photo2 — второй кадр при наведении.
   const HITS = [
     { id: 102, photo: 'img/sink-stone-black.webp', photo2: 'img/hit1-sink-steel.webp' },
+    { id: 132, photo: 'img/frap-basin-black.webp', photo2: 'img/hit2-frap-interior.webp', photo2Full: true },
     { id: 147, photo: 'img/radiator-panel.webp', photo2: 'img/hit3-radiator-long.webp' },
     { id: 178, photo: 'img/valtec-collector.webp', photo2: 'img/valtec-collector-detail.webp', photo2Full: true },
+    { id: 118, photo: 'img/hit5-glauf-filter.webp', photo2: 'img/hit5-glauf-interior.webp', photo2Full: true, color: 'хром' },
   ];
   HITS.forEach(function (h) {
     const p = PRODUCTS.find(function (x) { return x.id === h.id; });
     if (!p) return;
     p.hit = true;
+    if (h.color) {
+      p.name = p.name.replace(p.attrs['Цвет'], h.color);
+      p.attrs['Цвет'] = h.color;
+      p.img = Object.assign({}, p.img, { color: h.color });
+    }
     p.img = Object.assign({}, p.img, { photo: h.photo, photo2: h.photo2, photo2Full: !!h.photo2Full });
   });
 
