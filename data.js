@@ -185,13 +185,13 @@
     { cat: ['radiatory'], re: /^Радиатор стальной панельный/, photo: 'img/radiator-panel.webp' },
     { cat: ['moyki'], re: /искусственного камня/, color: ['черный', 'графит'], photo: 'img/sink-stone-black.webp' },
     { cat: ['g-lauf', 'frap'], re: /^Смеситель для кухни/, color: 'хром', photo: 'img/faucet-kitchen-pullout.webp' },
-    { cat: ['valtec'], re: /^Коллектор/, photo: 'img/valtec-collector.webp', photo2: 'img/valtec-collector-detail.webp' },
+    { cat: ['valtec'], re: /^Коллектор/, photo: 'img/valtec-collector.webp', photo2: 'img/valtec-collector-detail.webp', photo2Full: true },
     { cat: ['komplektuyushchie'], re: /^Термоголовка|^Клапан термостатический угловой/, photo: 'img/thermohead-valve.webp' },
     { cat: ['komplektuyushchie'], re: /^Комплект заглушек|^Кронштейн для стального/, photo: 'img/radiator-kit.webp' },
   ];
   PRODUCTS.forEach(function (p) {
     const m = PHOTOS.find(function (x) { return x.cat.includes(p.cat) && x.re.test(p.name) && (!x.color || [].concat(x.color).includes(p.img.color)); });
-    if (m) { p.img.photo = m.photo; if (m.photo2) p.img.photo2 = m.photo2; }
+    if (m) { p.img.photo = m.photo; if (m.photo2) p.img.photo2 = m.photo2; if (m.photo2Full) p.img.photo2Full = true; }
   });
   // Обложки разделов
   const COVERS = { 'moyki': 'img/sink-stone-black.webp', 'radiatory': 'img/radiator-panel.webp', 'frap': 'img/frap-basin-black.webp', 'g-lauf': 'img/faucet-kitchen-pullout.webp', 'komplektuyushchie': 'img/thermohead-valve.webp', 'valtec': 'img/valtec-collector.webp' };
@@ -202,12 +202,13 @@
   const HITS = [
     { id: 102, photo: 'img/sink-stone-black.webp', photo2: 'img/hit1-sink-steel.webp' },
     { id: 147, photo: 'img/radiator-panel.webp', photo2: 'img/hit3-radiator-long.webp' },
+    { id: 178, photo: 'img/valtec-collector.webp', photo2: 'img/valtec-collector-detail.webp', photo2Full: true },
   ];
   HITS.forEach(function (h) {
     const p = PRODUCTS.find(function (x) { return x.id === h.id; });
     if (!p) return;
     p.hit = true;
-    p.img = Object.assign({}, p.img, { photo: h.photo, photo2: h.photo2 });
+    p.img = Object.assign({}, p.img, { photo: h.photo, photo2: h.photo2, photo2Full: !!h.photo2Full });
   });
 
   window.SHOP = { CATEGORIES: CATEGORIES, PRODUCTS: PRODUCTS, HITS: HITS.map(function (h) { return h.id; }) };
